@@ -11,6 +11,9 @@ android:
     - sys-img-armeabi-v7a-android-9
     - sys-img-armeabi-v7a-android-25
 
+  jdk:
+    - oraclejdk8
+
   before_script:
     - chmod +x gradlew
     # Create and start an emulator for instrumentation tests.
