@@ -20,4 +20,8 @@ allprojects {
         maven {url "http://maven.aliyun.com/nexus/content/groups/public/" }
         jcenter()
     }
+
+    ext {
+        COMPILE_SDK_VER = Integer.parseInt(COMPILE_SDK_VER)
+    }
 }
