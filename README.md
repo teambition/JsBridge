@@ -1,4 +1,6 @@
-#JsBridge
+[![Build Status](https://travis-ci.org/Muxter/JsBridge.svg?branch=master)](https://travis-ci.org/Muxter/JsBridge)
+
+# JsBridge
 
 -----
 
