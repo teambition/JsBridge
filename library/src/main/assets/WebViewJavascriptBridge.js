@@ -85,8 +85,7 @@
                     return;
                 }
                 responseCallback(message.responseData);
-                // 不删除，以支持多次回调的情况
-//                delete responseCallbacks[message.responseId];
+                delete responseCallbacks[message.responseId];
             } else {
                 //直接发送
                 if (message.callbackId) {
