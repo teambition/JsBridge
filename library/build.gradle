@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
 
-version = "1.0.0"
+version = "1.0.6"
 
 android {
     compileSdkVersion COMPILE_SDK_VER
@@ -42,5 +43,22 @@ artifacts {
     archives javadocJar
     archives sourcesJar
 }
+
+def mArtifact = project.name
+def mVersion = android.defaultConfig.versionName
+// install to local repository
+task install(type: Upload) {
+    description "Installs the artifacts to the local Maven repository."
+    configuration = configurations['archives']
+    repositories.mavenDeployer {
+        repository url: repositories.mavenLocal().url
+        pom.project {
+            groupId 'com.teambition'
+            artifactId mArtifact
+            version mVersion + '-SNAPSHOT'
+        }
+    }
+}
+
 //Properties properties = new Properties()
 //properties.load(project.rootProject.file('local.properties').newDataInputStream())
