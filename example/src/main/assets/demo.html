@@ -104,6 +104,16 @@ function connectWebViewJavascriptBridge(callback) {
                 responseCallback(responseData);
             });
         })
+
+      if (window.TeambitionMobileSDK) {
+         console.log('TeambitionMobileSDK');
+      } else {
+        document.addEventListener(
+          'TeambitionMobileSDKReady',
+          function() {
+                console.log('TeambitionMobileSDKReady');
+          }, false);
+      }
     </script>
 
 </html>
