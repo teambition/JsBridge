@@ -44,12 +44,10 @@ public class BridgeWebViewClient extends WebViewClient {
     @Override
     public void onPageFinished(WebView view, String url) {
         super.onPageFinished(view, url);
+        BridgeUtil.webViewLoadLocalJs(view, BridgeWebView.toLoadDelegateJs);
+        BridgeUtil.webViewLoadLocalJs(view, BridgeWebView.toLoadJs);
 
-        if (BridgeWebView.toLoadJs != null) {
-            BridgeUtil.webViewLoadLocalJs(view, BridgeWebView.toLoadJs);
-        }
 
-        //
         if (webView.getStartupMessage() != null) {
             for (Message m : webView.getStartupMessage()) {
                 webView.dispatchMessage(m);

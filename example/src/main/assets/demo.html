@@ -74,29 +74,29 @@
             document.getElementById("show").innerHTML = logContent;
         }
 
-        function connectWebViewJavascriptBridge(callback) {
-            if (window.WebViewJavascriptBridge) {
+function connectWebViewJavascriptBridge(callback) {
+    if (window.WebViewJavascriptBridge) {
                 callback(WebViewJavascriptBridge)
-            } else {
-                document.addEventListener(
+    } else {
+      document.addEventListener(
                     'WebViewJavascriptBridgeReady'
                     , function() {
                         callback(WebViewJavascriptBridge)
                     },
                     false
                 );
-            }
-        }
+    }
+  }
 
-        connectWebViewJavascriptBridge(function(bridge) {
+  connectWebViewJavascriptBridge(function(bridge) {
             bridge.init(function(message, responseCallback) {
                 console.log('JS got a message', message);
                 var data = {
                     'Javascript Responds': '测试中文!'
-                };
+      };
                 console.log('JS responding with', data);
                 responseCallback(data);
-            });
+  });
 
             bridge.registerHandler("functionInJs", function(data, responseCallback) {
                 document.getElementById("show").innerHTML = ("data from Java: = " + data);
