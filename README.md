@@ -149,6 +149,19 @@ If WebViewJavascriptBridge does not exit, you can listen to WebViewJavascriptBri
     }
 
 ```
+If TeambitionMobileSDK does not exit, you can listen to TeambitionMobileSDKReady event, as the blow code shows:
+```javascript
+ if (window.TeambitionMobileSDK) {
+            //do your work here
+      } else {
+        document.addEventListener(
+          'TeambitionMobileSDKReady',
+          function() {
+              //do your work here
+          }, false);
+      }
+
+```
 
 ## License
 
