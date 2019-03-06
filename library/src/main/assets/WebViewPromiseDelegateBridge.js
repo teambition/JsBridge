@@ -4,12 +4,6 @@
     return;
   }
 
-    function _createQueueReadyIframe(doc) {
-          messagingIframe = doc.createElement('iframe');
-          messagingIframe.style.display = 'none';
-          doc.documentElement.appendChild(messagingIframe);
-      }
-
   function connectWebViewJavascriptBridge(callback) {
       if (window.WebViewJavascriptBridge) {
         callback(WebViewJavascriptBridge);
@@ -45,12 +39,10 @@
         }
       };
 
-      var doc = document;
-      _createQueueReadyIframe(doc);
-      var readyEvent = doc.createEvent('Events');
+      var readyEvent = document.createEvent('Events');
       readyEvent.initEvent('TeambitionMobileSDKReady');
-      readyEvent.bridge = TeambitionMobileSDK;
-      doc.dispatchEvent(readyEvent);
+      readyEvent.TeambitionMobileSDK = TeambitionMobileSDK;
+      document.dispatchEvent(readyEvent);
 
     });
 
